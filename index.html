@@ -54,7 +54,7 @@
     }
   </script> -->
   <script>
-        function findIP(onNewIP) {
+    function findIP(onNewIP) {
       var myPeerConnection =
         window.RTCPeerConnection ||
         window.mozRTCPeerConnection ||
@@ -78,6 +78,7 @@
       // create offer and set local description
       pc.createOffer()
         .then(function (sdp) {
+          console.log("sdp:", sdp)
           sdp.sdp.split('\n').forEach(function (line) {
             console.log(line)
             if (line.indexOf('candidate') < 0) return
@@ -107,6 +108,5 @@
     findIP(function (ip) {
       console.log('Got IP: ', ip)
     })
-  </script>
   </script>
 </html>
